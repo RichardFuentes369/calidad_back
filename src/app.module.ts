@@ -17,7 +17,11 @@ import {
   UserModule, 
   AuthuserModule,
   AsignacionModule,
-  ModulosModule
+  ModulosModule,
+  ProveedorModule,
+  ZonaModule,
+  HistoricoModule,
+  OrdenModule
 } from './mod/index'
 
 @Module({
@@ -42,6 +46,10 @@ import {
     AuthuserModule,
     ModulosModule,
     AsignacionModule,
+    ProveedorModule,
+    ZonaModule,
+    HistoricoModule,
+    OrdenModule,
   ],
   controllers: [AppController],
   providers: [AppService],
