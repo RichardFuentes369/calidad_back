@@ -11,6 +11,9 @@ export class Proveedor {
 
   @Column()
   telefono: string;
+
+  @Column()
+  nit: string;
   
   @Column({ unique: true })
   email: string;
