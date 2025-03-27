@@ -1,26 +1,26 @@
 // import { Transform } from "class-transformer";
-import { IsString, IsBoolean, IsNumber, IsEmail } from "class-validator";
+import { IsString, IsBoolean, IsNumber, IsEmail, IsEnum } from "class-validator";
+
+enum Estado {
+    activo = 'activo',
+    inactivo = 'inactivo'
+}
 
 export class CreateProveedorDto {
 
     @IsString()
-    // @Transform(({value}) => value.trim())
-    readonly firstName;
+    readonly razonSocial;
 
     @IsString()
-    // @Transform(({value}) => value.trim())
-    readonly lastName;
+    readonly telefono;
     
     @IsEmail()
-    // @Transform(({value}) => value.trim())
     readonly email;
 
     @IsString()
-    // @Transform(({value}) => value.trim())
-    readonly password;
+    @IsEnum(Estado)
+    readonly estado;
 
-    @IsBoolean()
-    // @Transform(({value}) => value.trim())
-    readonly isActive;
-
+    @IsString()
+    readonly nit;
 }

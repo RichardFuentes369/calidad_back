@@ -13,31 +13,31 @@ export class ProveedorController {
     @ApiTags('proveedor')
     @Post('crear-proveedor')
     create(@Body() createProveedorDto: CreateProveedorDto) {
-      // return this.userService.create(createProveedorDto);
+      return this.proveedorService.create(createProveedorDto);
     }
 
     @ApiTags('proveedor')
     @Get()
     findAll(@Query() paginationDto: PaginationDto) {
-      // return this.userService.findAll(paginationDto);
+      return this.proveedorService.findAll(paginationDto);
     }
     
     @ApiTags('proveedor')
     @Get('obtener-proveedor/:id')
     findOne(@Param('id') id: string) {
-      // return this.userService.findOne(+id);
+      return this.proveedorService.findOne(+id);
     }
 
     @ApiTags('proveedor')
     @Patch('editar-proveedor/:id')
     update(@Param('id') id: string, @Body() updateProveedorDto: UpdateProveedorDto) {
-      // return this.userService.update(+id, updateUserDto);
+      return this.proveedorService.update(+id, updateProveedorDto);
     }
     
     @ApiTags('proveedor')
     @Delete('eliminar-proveedor/:id')
     remove(@Param('id') id: string) {
-      // return this.userService.remove(+id);
+      return this.proveedorService.remove(+id);
     }
 
 }

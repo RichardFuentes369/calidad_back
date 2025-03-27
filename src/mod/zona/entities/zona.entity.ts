@@ -15,11 +15,16 @@ export class Zona {
     @Column()
     ubicacion: string;
   
-    @Column()
-    fecha_creacion: string;
+    @Column({ 
+      type: 'timestamp', 
+      default: () => 'CURRENT_TIMESTAMP' 
+    })
+    fecha_creacion: number;
   
-    @Column()
-    fecha_actualizacion: string;
+    @Column({
+      nullable: true
+    })
+    fecha_actualizacion: number;
 
   // @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
   // permiso: PermisosModulos

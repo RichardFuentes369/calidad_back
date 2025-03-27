@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "5688457f-9c22-40fb-9b1c-253ce2819217",
-		"name": "Core - Nest",
+		"_postman_id": "215277d3-2c63-4021-992f-9ff8f7c4c07e",
+		"name": "Core-proveedores",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "7819792"
 	},
@@ -211,10 +211,6 @@
 			]
 		},
 		{
-			"name": "posts",
-			"item": []
-		},
-		{
 			"name": "users",
 			"item": [
 				{
@@ -410,7 +406,7 @@
 									"response": []
 								},
 								{
-									"name": "New Request",
+									"name": "updateAsignacionPermiso",
 									"request": {
 										"method": "PUT",
 										"header": [],
@@ -527,7 +523,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"firstName\": \"AdminName2\",\r\n    \"lastName\": \"AdminLastname2\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin2@correo.com\",\r\n    \"isActive\": false\r\n}",
+											"raw": "{\r\n    \"firstName\": \"AdminName11\",\r\n    \"lastName\": \"AdminLastname11\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"admin11@correo.com\",\r\n    \"isActive\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -555,7 +551,7 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "localhost:3000/api/admin/eliminar-admininistrador/4",
+											"raw": "localhost:3000/api/admin/eliminar-admininistrador/1",
 											"host": [
 												"localhost"
 											],
@@ -564,7 +560,7 @@
 												"api",
 												"admin",
 												"eliminar-admininistrador",
-												"4"
+												"1"
 											]
 										}
 									},
@@ -577,7 +573,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"firstName\": \"Admin121\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": false\r\n}",
+											"raw": "{\r\n    \"firstName\": \"Admin1\",\r\n    \"lastName\": \"Principal\",\r\n    \"isActive\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -585,7 +581,7 @@
 											}
 										},
 										"url": {
-											"raw": "localhost:3000/api/admin/editar-administrador/1",
+											"raw": "localhost:3000/api/admin/editar-administrador",
 											"host": [
 												"localhost"
 											],
@@ -593,8 +589,7 @@
 											"path": [
 												"api",
 												"admin",
-												"editar-administrador",
-												"1"
+												"editar-administrador"
 											]
 										}
 									},
@@ -685,7 +680,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n    \"firstName\": \"Usuario1\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user1@gmail.com\",\r\n    \"isActive\": true\r\n}",
+											"raw": "{\r\n    \"firstName\": \"Usuario2\",\r\n    \"lastName\": \"Gates\",\r\n    \"password\": \"Qwerty9601\",\r\n    \"email\": \"user2@gmail.com\",\r\n    \"isActive\": true\r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -852,6 +847,379 @@
 									"response": []
 								}
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "zonaComun",
+			"item": [
+				{
+					"name": "getZonas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/zona?page=1&limit=2&field=id&order=asc",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"zona"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "field",
+									"value": "id"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getZona-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/zona/obtener-zonaSocial/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"zona",
+								"obtener-zonaSocial",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postZona",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Zona 1\",\n    \"descripcion\": \"Porteria\",\n    \"ubicacion\": \"Al lado de algo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/zona/crear-zona",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"zona",
+								"crear-zona"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteZona",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/zona/eliminar-zonaSocial/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"zona",
+								"eliminar-zonaSocial",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putZona",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Zona 1\",\n    \"descripcion\": \"Porteria\",\n    \"ubicacion\": \"Al lado de algo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/zona/editar-zonaSocial/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"zona",
+								"editar-zonaSocial",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "proveedor",
+			"item": [
+				{
+					"name": "getProveedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/proveedor?page=1&limit=2&field=id&order=asc",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"proveedor"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "field",
+									"value": "id"
+								},
+								{
+									"key": "order",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProveedor-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/proveedor/obtener-proveedor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"proveedor",
+								"obtener-proveedor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postProveedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"razonSocial\": \"Proveedor 1\",\n    \"telefono\": \"3504284093\",\n    \"nit\": \"1-62593363\",\n    \"email\": \"proveedor1@gmail.com\",\n    \"estado\": \"activo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/proveedor/crear-proveedor",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"proveedor",
+								"crear-proveedor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProveedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/proveedor/eliminar-proveedor/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"proveedor",
+								"eliminar-proveedor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putProveedor",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"razonSocial\": \"Proveedor 3\",\n    \"telefono\": \"3504284093\",\n    \"nit\": \"1-62593363\",\n    \"email\": \"proveedor3@gmail.com\",\n    \"estado\": \"inactivo\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/proveedor/editar-proveedor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"proveedor",
+								"editar-proveedor",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mantenimiento",
+			"item": [
+				{
+					"name": "historico",
+					"item": [
+						{
+							"name": "getHistorico-id",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "crearHistorico",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "editarHistorico",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "eliminarHistorico",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "verHistorico",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "orden",
+					"item": [
+						{
+							"name": "eliminarOrden",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "editarOrden",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "crearOrden",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "actualizarOrden",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
 						}
 					]
 				}

@@ -14,31 +14,31 @@ export class ZonaController {
     @ApiTags('zonaSocial')
     @Post('crear-zona')
     create(@Body() createZonaDto: CreateZonaDto) {
-      // return this.userService.create(createZonaDto);
+      return this.zonaService.create(createZonaDto);
     }
 
     @ApiTags('zonaSocial')
     @Get()
     findAll(@Query() paginationDto: PaginationDto) {
-      // return this.userService.findAll(paginationDto);
+      return this.zonaService.findAll(paginationDto);
     }
     
     @ApiTags('zonaSocial')
     @Get('obtener-zonaSocial/:id')
     findOne(@Param('id') id: string) {
-      // return this.userService.findOne(+id);
+      return this.zonaService.findOne(+id);
     }
 
     @ApiTags('zonaSocial')
     @Patch('editar-zonaSocial/:id')
     update(@Param('id') id: string, @Body() updateZonaDto: UpdateZonaDto) {
-      // return this.userService.update(+id, updateUserDto);
+      return this.zonaService.update(+id, updateZonaDto);
     }
     
     @ApiTags('zonaSocial')
     @Delete('eliminar-zonaSocial/:id')
     remove(@Param('id') id: string) {
-      // return this.userService.remove(+id);
+      return this.zonaService.remove(+id);
     }
   
 }
