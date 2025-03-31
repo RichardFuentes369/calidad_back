@@ -24,19 +24,19 @@ export class ZonaController {
     }
     
     @ApiTags('zonaSocial')
-    @Get('obtener-zonaSocial/:id')
+    @Get('obtener-zona/:id')
     findOne(@Param('id') id: string) {
       return this.zonaService.findOne(+id);
     }
 
     @ApiTags('zonaSocial')
-    @Patch('editar-zonaSocial/:id')
+    @Patch('editar-zona/:id')
     update(@Param('id') id: string, @Body() updateZonaDto: UpdateZonaDto) {
       return this.zonaService.update(+id, updateZonaDto);
     }
     
     @ApiTags('zonaSocial')
-    @Delete('eliminar-zonaSocial/:id')
+    @Delete('eliminar-zona/:id')
     remove(@Param('id') id: string) {
       return this.zonaService.remove(+id);
     }

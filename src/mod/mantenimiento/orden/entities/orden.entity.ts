@@ -1,5 +1,6 @@
 // import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { ordenStatus } from './enums/ordenStatus';
 
 @Entity('mod_mantenimiento_orden')
 export class Orden {
@@ -10,19 +11,28 @@ export class Orden {
     descripcion: string;
   
     @Column()
-    precio: string;
+    precio: number;
     
     @Column()
     fecha_mantenimiento: string;
   
-    @Column()
-    fecha_creacion: string;
+    @Column({ 
+      type: 'timestamp', 
+      default: () => 'CURRENT_TIMESTAMP' 
+    })
+    fecha_creacion: number;
   
-    @Column()
-    fecha_actualizacion: string;
+    @Column({
+      nullable: true
+    })
+    fecha_actualizacion: number;
 
-    @Column()
-    estado: string;
+    @Column({
+      type: 'enum',
+      enum: ordenStatus,
+      default: ordenStatus.EnEspera,
+    })
+    estado: ordenStatus;
 
   // @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
   // permiso: PermisosModulos

@@ -6,10 +6,10 @@ export class Zona {
     @PrimaryGeneratedColumn('increment')
     id: number;
   
-    @Column()
+    @Column({ nullable: false })
     nombre: string;
   
-    @Column()
+    @Column({ nullable: false })
     descripcion: string;
 
     @Column()

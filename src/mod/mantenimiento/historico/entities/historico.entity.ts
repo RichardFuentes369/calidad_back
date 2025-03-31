@@ -1,5 +1,5 @@
-// import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Orden } from '@module/mantenimiento/orden/entities/orden.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 @Entity('mod_mantenimiento_historico')
 export class Historico {
@@ -8,10 +8,14 @@ export class Historico {
   
     @Column()
     observacion: string;
+
+    @Column()
+    precio: number;
   
     @Column()
     recomendacion: string;
 
-  // @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
-  // permiso: PermisosModulos
+    @ManyToOne(() => Orden, { nullable: true })
+    @JoinColumn({ name: 'orden_id' })
+    orden: Orden;
 }
