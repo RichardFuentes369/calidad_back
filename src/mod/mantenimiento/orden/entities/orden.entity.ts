@@ -1,12 +1,22 @@
 // import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, BeforeInsert } from 'typeorm';
 import { ordenStatus } from './enums/ordenStatus';
 
 @Entity('mod_mantenimiento_orden')
 export class Orden {
+
+    @BeforeInsert()
+    generateSerial() {
+        this.serial = `ORD-${Date.now()}`;
+        this.fecha_creacion = Date.now();
+    }
+
     @PrimaryGeneratedColumn('increment')
     id: number;
-  
+
+    @Column()
+    serial: string;
+    
     @Column()
     descripcion: string;
   
@@ -14,12 +24,9 @@ export class Orden {
     precio: number;
     
     @Column()
-    fecha_mantenimiento: string;
+    fecha_mantenimiento: number;
   
-    @Column({ 
-      type: 'timestamp', 
-      default: () => 'CURRENT_TIMESTAMP' 
-    })
+    @Column()
     fecha_creacion: number;
   
     @Column({

@@ -1,15 +1,12 @@
 // import { Transform } from "class-transformer";
 import { IsString, IsBoolean, IsNumber, IsEmail, IsDate } from "class-validator";
 
-export class CreateOrdenDto {
+export class FilterOrdenDto {
 
     @IsString()
-    readonly descripcion;
+    readonly tipo;
 
-    @IsDate()
-    readonly fecha_mantenimiento;
-
-    @IsNumber()
-    readonly precio;
+    @IsString()
+    readonly serial;
 
 }

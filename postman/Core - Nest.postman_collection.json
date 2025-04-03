@@ -1190,34 +1190,97 @@
 					"name": "orden",
 					"item": [
 						{
-							"name": "eliminarOrden",
+							"name": "gerOrdenes",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/orden-mantenimiento?page=1&limit=10&field=id&order=asc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-mantenimiento"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "field",
+											"value": "id"
+										},
+										{
+											"key": "order",
+											"value": "asc"
+										}
+									]
+								}
 							},
 							"response": []
 						},
 						{
-							"name": "editarOrden",
+							"name": "postMantenimiento",
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"descripcion\": \"Mantenimiento xxx\",\n    \"fecha_mantenimiento\": \"2025-12-06\",\n    \"precio\": 35000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/orden-mantenimiento",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-mantenimiento"
+									]
+								}
 							},
 							"response": []
 						},
 						{
-							"name": "crearOrden",
+							"name": "getOrden-orden",
 							"request": {
 								"method": "GET",
-								"header": []
-							},
-							"response": []
-						},
-						{
-							"name": "actualizarOrden",
-							"request": {
-								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/orden-mantenimiento/orden?serial=1743722435&tipo=Ord",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-mantenimiento",
+										"orden"
+									],
+									"query": [
+										{
+											"key": "serial",
+											"value": "1743722435"
+										},
+										{
+											"key": "tipo",
+											"value": "Ord"
+										}
+									]
+								}
 							},
 							"response": []
 						}
