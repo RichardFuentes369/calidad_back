@@ -898,7 +898,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/zona/obtener-zonaSocial/2",
+							"raw": "localhost:3000/api/zona/obtener-zona/11",
 							"host": [
 								"localhost"
 							],
@@ -906,8 +906,8 @@
 							"path": [
 								"api",
 								"zona",
-								"obtener-zonaSocial",
-								"2"
+								"obtener-zona",
+								"11"
 							]
 						}
 					},
@@ -948,7 +948,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/zona/eliminar-zonaSocial/1",
+							"raw": "localhost:3000/api/zona/eliminar-zona/1",
 							"host": [
 								"localhost"
 							],
@@ -956,7 +956,7 @@
 							"path": [
 								"api",
 								"zona",
-								"eliminar-zonaSocial",
+								"eliminar-zona",
 								"1"
 							]
 						}
@@ -978,7 +978,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/zona/editar-zonaSocial/1",
+							"raw": "localhost:3000/api/zona/editar-zona/1",
 							"host": [
 								"localhost"
 							],
@@ -986,8 +986,28 @@
 							"path": [
 								"api",
 								"zona",
-								"editar-zonaSocial",
+								"editar-zona",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getZonaSelect",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/zona/zonaSelect",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"zona",
+								"zonaSelect"
 							]
 						}
 					},
@@ -1145,14 +1165,6 @@
 					"name": "historico",
 					"item": [
 						{
-							"name": "getHistorico-id",
-							"request": {
-								"method": "GET",
-								"header": []
-							},
-							"response": []
-						},
-						{
 							"name": "crearHistorico",
 							"request": {
 								"method": "GET",
@@ -1233,7 +1245,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"descripcion\": \"Mantenimiento xxx\",\n    \"fecha_mantenimiento\": \"2025-12-06\",\n    \"precio\": 35000\n}",
+									"raw": "{\n    \"descripcion\": \"Mantenimiento xxx\",\n    \"fecha_mantenimiento\": \"2025-12-06\",\n    \"zona_id\": 2\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1260,7 +1272,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/orden-mantenimiento/orden?serial=1743722435&tipo=Ord",
+									"raw": "localhost:3000/api/orden-mantenimiento/orden?serial=1743964043&tipo=Ord",
 									"host": [
 										"localhost"
 									],
@@ -1273,12 +1285,33 @@
 									"query": [
 										{
 											"key": "serial",
-											"value": "1743722435"
+											"value": "1743964043"
 										},
 										{
 											"key": "tipo",
 											"value": "Ord"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getOrder-id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/orden-mantenimiento/orden/8",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-mantenimiento",
+										"orden",
+										"8"
 									]
 								}
 							},
