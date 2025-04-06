@@ -6,10 +6,10 @@ export class CreateOrdenDto {
     @IsString()
     readonly descripcion;
 
-    @IsDate()
+    @IsString()
     readonly fecha_mantenimiento;
 
     @IsNumber()
-    readonly precio;
+    readonly zona_id;
 
 }

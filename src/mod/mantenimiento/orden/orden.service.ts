@@ -19,10 +19,10 @@ export class OrdenService {
 
     let modelo = {
       descripcion: createOrdenDto.descripcion,
-      precio: createOrdenDto.precio,
       serial: `Ord - ${Math.floor(Date.now() / 1000)}`,
       fecha_creacion: Math.floor(Date.now() / 1000),
       fecha_mantenimiento: Math.floor(new Date(createOrdenDto.fecha_mantenimiento).getTime() / 1000),
+      zona_id: createOrdenDto.zona_id
     }
 
     return this.ordenRepository.save(modelo);
@@ -61,7 +61,8 @@ export class OrdenService {
         take: limit,
         order: {
           [field]: order
-        }
+        },
+        relations: ['zona_id']
       })
     }
 

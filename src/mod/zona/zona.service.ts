@@ -111,4 +111,10 @@ export class ZonaService {
     });
   }
 
+  async findSelectZona(){
+    return this.zonaRepository.find({
+      select: ['id', 'nombre'],
+    });
+  }
+
 }

@@ -12,5 +12,8 @@ import { ZonaController } from './zona.controller';
     ...zonaProviders,
     ZonaService
   ],
+  exports: [
+    ZonaService
+  ]
 })
 export class ZonaModule {}

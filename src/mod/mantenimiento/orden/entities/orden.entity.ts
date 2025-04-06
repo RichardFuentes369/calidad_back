@@ -1,6 +1,7 @@
 // import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, BeforeInsert } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, BeforeInsert, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 import { ordenStatus } from './enums/ordenStatus';
+import { Zona } from '@module/zona/entities/zona.entity';
 
 @Entity('mod_mantenimiento_orden')
 export class Orden {
@@ -20,7 +21,9 @@ export class Orden {
     @Column()
     descripcion: string;
   
-    @Column()
+    @Column({
+      nullable: true
+    })
     precio: number;
     
     @Column()
@@ -40,6 +43,10 @@ export class Orden {
       default: ordenStatus.EnEspera,
     })
     estado: ordenStatus;
+
+    @ManyToOne(() => Zona, zona => zona.ordenes)
+    @JoinColumn({ name: 'zona_id' })
+    zona_id: Zona;
 
   // @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
   // permiso: PermisosModulos

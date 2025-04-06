@@ -21,6 +21,12 @@ export class ZonaController {
     @Get()
     findAll(@Query() paginationDto: PaginationDto) {
       return this.zonaService.findAll(paginationDto);
+    }    
+    
+    @ApiTags('zonaSocial')
+    @Get('zonaSelect')
+    zonaSelect() {
+      return this.zonaService.findSelectZona();
     }
     
     @ApiTags('zonaSocial')

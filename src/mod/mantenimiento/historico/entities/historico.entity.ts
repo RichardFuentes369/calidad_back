@@ -1,5 +1,6 @@
 import { Orden } from '@module/mantenimiento/orden/entities/orden.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
+import { Proveedor } from '@module/proveedor/entities/proveedor.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne, JoinColumn, OneToOne } from 'typeorm';
 
 @Entity('mod_mantenimiento_historico')
 export class Historico {
@@ -18,4 +19,9 @@ export class Historico {
     @ManyToOne(() => Orden, { nullable: true })
     @JoinColumn({ name: 'orden_id' })
     orden: Orden;
+
+    @OneToOne(() => Proveedor, { nullable: true })
+    @JoinColumn({ name: 'proveedor_id' })
+    proveedor: Proveedor;
+
 }
