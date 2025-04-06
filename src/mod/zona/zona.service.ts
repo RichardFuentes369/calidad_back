@@ -113,7 +113,7 @@ export class ZonaService {
 
   async findSelectZona(){
     return this.zonaRepository.find({
-      select: ['id', 'nombre'],
+      select: ['id', 'nombre', 'descripcion'],
     });
   }
 

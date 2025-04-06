@@ -86,12 +86,19 @@ export class OrdenService {
     }]
   }
 
-  findOne(filterOrdenDto: FilterOrdenDto) {
+  filterOrden(filterOrdenDto: FilterOrdenDto) {
 
     const _serial =  filterOrdenDto.tipo + " - " + filterOrdenDto.serial
 
     return this.ordenRepository.findOne({
       where: [ {serial : _serial}],
+      order: { id: 'DESC' }
+    });
+  }
+
+  findOne(_id: number) {
+    return this.ordenRepository.findOne({
+      where: [ { id: _id }],
       order: { id: 'DESC' }
     });
   }

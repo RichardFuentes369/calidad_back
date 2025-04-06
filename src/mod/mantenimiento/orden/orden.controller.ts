@@ -22,8 +22,14 @@ export class OrdenController {
 
   @ApiTags('orden-mantenimiento')
   @Get('orden')
-  findOne(@Query() filterOrdenDto: FilterOrdenDto) {
-    return this.ordenService.findOne(filterOrdenDto);
+  filterOrden(@Query() filterOrdenDto: FilterOrdenDto) {
+    return this.ordenService.filterOrden(filterOrdenDto);
+  }
+
+  @ApiTags('admin')
+  @Get('orden/:id')
+  findOne(@Param('id') id: string) {
+    return this.ordenService.findOne(+id);
   }
 
   @ApiTags('orden-mantenimiento')
