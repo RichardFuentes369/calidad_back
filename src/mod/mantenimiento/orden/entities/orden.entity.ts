@@ -1,5 +1,5 @@
 // import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, BeforeInsert, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, JoinColumn, ManyToOne, BeforeUpdate } from 'typeorm';
 import { ordenStatus } from './enums/ordenStatus';
 import { Zona } from '@module/zona/entities/zona.entity';
 
@@ -10,6 +10,12 @@ export class Orden {
     generateSerial() {
         this.serial = `ORD-${Date.now()}`;
         this.fecha_creacion = Date.now();
+    }
+    
+    // no funciona el actualizar (actualizo con save y no con update)
+    @BeforeUpdate()
+    actualizarFecha() {
+        this.fecha_actualizacion = Date.now();
     }
 
     @PrimaryGeneratedColumn('increment')
@@ -32,9 +38,8 @@ export class Orden {
     @Column()
     fecha_creacion: number;
   
-    @Column({
-      nullable: true
-    })
+    @Column({ nullable: true })
+    
     fecha_actualizacion: number;
 
     @Column({

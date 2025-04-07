@@ -26,7 +26,7 @@ export class OrdenController {
     return this.ordenService.filterOrden(filterOrdenDto);
   }
 
-  @ApiTags('admin')
+  @ApiTags('orden-mantenimiento')
   @Get('orden/:id')
   findOne(@Param('id') id: string) {
     return this.ordenService.findOne(+id);
@@ -46,10 +46,11 @@ export class OrdenController {
     return this.ordenService.create(createOrdenDto);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateOrdenDto: UpdateOrdenDto) {
-  //   return this.ordenService.update(+id, updateOrdenDto);
-  // }
+  @ApiTags('orden-mantenimiento')
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateOrdenDto: UpdateOrdenDto) {
+    return this.ordenService.update(+id, updateOrdenDto);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {

@@ -99,20 +99,22 @@ export class OrdenService {
   findOne(_id: number) {
     return this.ordenRepository.findOne({
       where: [ { id: _id }],
-      order: { id: 'DESC' }
+      order: { id: 'DESC' },
+      relations: ['zona_id']
     });
   }
 
-  // async update(id: number, updateOrdenDto: UpdateOrdenDto) {
-  //   const property = await this.ordenRepository.findOne({
-  //     where: { id }
-  //   });
-    
-  //   return this.ordenRepository.save({
-  //     ...property, // existing fields
-  //     ...updateOrdenDto // updated fields
-  //   });
-  // }
+  async update(id: number, updateOrdenDto: UpdateOrdenDto) {
+
+    const property = await this.ordenRepository.findOne({
+      where: { id }
+    });
+
+    return this.ordenRepository.save({
+      ...property, // existing fields
+      ...updateOrdenDto // updated fields
+    });
+  }
 
   // remove(id: number) {
   //   return this.ordenRepository.delete(id);
