@@ -12,5 +12,8 @@ import { ProveedorController } from './proveedor.controller';
     ...proveedorProviders,
     ProveedorService
   ],
+  exports: [
+    ProveedorService
+  ]
 })
 export class ProveedorModule {}

@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { Historico } from './historico.entity';
 
-export const userProviders = [
+export const historicoProvider = [
   {
     provide: 'HISTORICO_REPOSITORY',
     useFactory: (dataSource: DataSource) => dataSource.getRepository(Historico),

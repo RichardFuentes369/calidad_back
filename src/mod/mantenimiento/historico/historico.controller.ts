@@ -1,34 +1,22 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, HttpException, HttpStatus } from '@nestjs/common';
 import { HistoricoService } from './historico.service';
 import { CreateHistoricoDto } from './dto/create-historico.dto';
 import { UpdateHistoricoDto } from './dto/update-historico.dto';
+import { ApiTags } from '@nestjs/swagger';
+import { PaginationDto } from '@global/dto/pagination.dto';
+import { ProveedorService } from '@module/proveedor/proveedor.service';
 
-@Controller('historico')
+@Controller('orden-historico')
 export class HistoricoController {
-  constructor(private readonly historicoService: HistoricoService) {}
+  constructor(
+    private readonly historicoService: HistoricoService,
+    private readonly proveedorService: ProveedorService
+  ) {}
 
-  @Post()
-  create(@Body() createHistoricoDto: CreateHistoricoDto) {
-    return this.historicoService.create(createHistoricoDto);
+  @ApiTags('orden-historico')
+  @Get(':idOrden')
+  findAll(@Param('idOrden') idOrden: string, @Query() paginationDto: PaginationDto) {
+    return this.historicoService.findAll(+idOrden, paginationDto);
   }
 
-  @Get()
-  findAll() {
-    return this.historicoService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.historicoService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateHistoricoDto: UpdateHistoricoDto) {
-    return this.historicoService.update(+id, updateHistoricoDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.historicoService.remove(+id);
-  }
 }

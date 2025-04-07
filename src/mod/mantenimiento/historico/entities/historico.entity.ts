@@ -16,12 +16,15 @@ export class Historico {
     @Column()
     recomendacion: string;
 
+    @Column({ name: 'orden_id', nullable: true})
+    ordenId: number;
+
     @ManyToOne(() => Orden, { nullable: true })
     @JoinColumn({ name: 'orden_id' })
-    orden: Orden;
+    orden_id: Orden;
 
-    @OneToOne(() => Proveedor, { nullable: true })
+    @ManyToOne(() => Proveedor, { nullable: true })
     @JoinColumn({ name: 'proveedor_id' })
-    proveedor: Proveedor;
+    proveedor_id: Proveedor;
 
 }
