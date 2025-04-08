@@ -121,4 +121,13 @@ export class ProveedorService {
       where: [{nit : nit}]
     });
   }
+
+  async findSelectProveedor(){
+    return this.proveedorRepository.find({
+      select: ['id', 'razonSocial'],
+      where: [
+        { 'estado': 'activo' }
+      ]
+    });
+  }
 }

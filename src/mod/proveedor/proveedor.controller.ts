@@ -21,6 +21,12 @@ export class ProveedorController {
     findAll(@Query() paginationDto: PaginationDto) {
       return this.proveedorService.findAll(paginationDto);
     }
+
+    @ApiTags('proveedor')
+    @Get('proveedorSelect')
+    zonaSelect() {
+      return this.proveedorService.findSelectProveedor();
+    }
     
     @ApiTags('proveedor')
     @Get('obtener-proveedor/:id')
