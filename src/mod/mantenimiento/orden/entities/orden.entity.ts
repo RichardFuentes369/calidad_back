@@ -28,7 +28,7 @@ export class Orden {
     descripcion: string;
   
     @Column({
-      nullable: true
+      default: 0,
     })
     precio: number;
     
@@ -39,7 +39,6 @@ export class Orden {
     fecha_creacion: number;
   
     @Column({ nullable: true })
-    
     fecha_actualizacion: number;
 
     @Column({
