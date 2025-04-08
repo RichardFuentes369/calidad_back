@@ -16,5 +16,8 @@ import { ZonaModule } from '@module/zona/zona.module';
     ...ordenProviders,
     OrdenService
   ],
+  exports:[
+    OrdenService
+  ]
 })
 export class OrdenModule {}

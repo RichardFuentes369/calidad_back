@@ -10,10 +10,9 @@ import { FilterOrdenDto } from './dto/filter-orden.dto';
 @Injectable()
 export class OrdenService {
   constructor(
-    @Inject('ORDEN_REPOSITORY')
-    private ordenRepository: Repository<Orden>,
+      @Inject('ORDEN_REPOSITORY')
+      private ordenRepository: Repository<Orden>,
   ) {}
-
 
   async create(createOrdenDto: CreateOrdenDto) {
 
@@ -105,7 +104,6 @@ export class OrdenService {
   }
 
   async update(id: number, updateOrdenDto: UpdateOrdenDto) {
-
     const property = await this.ordenRepository.findOne({
       where: { id }
     });
@@ -114,6 +112,20 @@ export class OrdenService {
       ...property, // existing fields
       ...updateOrdenDto // updated fields
     });
+  }
+
+  async actualizarPrecio(id: number, precio: number, opcion: number){
+
+    const orden = await this.ordenRepository.findOneBy({ id: id });
+
+    if (orden && opcion == 1) {
+      orden.precio += precio
+    }else{
+      orden.precio -= precio
+    }
+    
+    return this.ordenRepository.save(orden)
+
   }
 
   // remove(id: number) {

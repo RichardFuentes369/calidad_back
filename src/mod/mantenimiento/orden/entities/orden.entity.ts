@@ -9,13 +9,13 @@ export class Orden {
     @BeforeInsert()
     generateSerial() {
         this.serial = `ORD-${Date.now()}`;
-        this.fecha_creacion = Date.now();
+        this.fecha_creacion = Math.floor(Date.now() / 1000);
     }
     
     // no funciona el actualizar (actualizo con save y no con update)
     @BeforeUpdate()
     actualizarFecha() {
-        this.fecha_actualizacion = Date.now();
+        this.fecha_actualizacion = Math.floor(Date.now() / 1000);
     }
 
     @PrimaryGeneratedColumn('increment')

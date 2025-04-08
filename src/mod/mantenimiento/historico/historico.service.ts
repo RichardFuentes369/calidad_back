@@ -4,13 +4,28 @@ import { UpdateHistoricoDto } from './dto/update-historico.dto';
 import { PaginationDto } from '@global/dto/pagination.dto';
 import { Repository } from 'typeorm';
 import { Historico } from './entities/historico.entity';
+import { Orden } from '../orden/entities/orden.entity';
 
 @Injectable()
 export class HistoricoService {
   constructor(
     @Inject('HISTORICO_REPOSITORY')
-    private ordenRepository: Repository<Historico>,
+    private historicoRepository: Repository<Historico>,
   ) {}
+
+
+  async create(createHistoricoDto: CreateHistoricoDto) {
+
+    let modelo = {
+      observacion: createHistoricoDto.observacion,
+      precio: createHistoricoDto.precio,
+      recomendacion: createHistoricoDto.recomendacion,
+      ordenId: createHistoricoDto.orden_id,
+      proveedor_id: createHistoricoDto.proveedor_id,
+    }
+
+    return await this.historicoRepository.save(modelo)
+  }
 
   listarPropiedadesTabla(T) {
     const metadata = T.metadata;
@@ -30,7 +45,7 @@ export class HistoricoService {
     if(!paginationDto.limit) throw new NotFoundException(`Debe enviar el parametro limit`)
 
     if(field != ''){
-      const propiedades = this.listarPropiedadesTabla(this.ordenRepository)
+      const propiedades = this.listarPropiedadesTabla(this.historicoRepository)
       const arratResult = propiedades.filter(obj => obj === field).length
   
       if(arratResult == 0) throw new NotFoundException(`El parametro de busqueda ${field} no existe en la base de datos`)
@@ -40,7 +55,7 @@ export class HistoricoService {
     const skipeReal = (page == 1) ? 0 : (page - 1) * limit
 
     const peticion = async (page) => {
-      return await this.ordenRepository.find({
+      return await this.historicoRepository.find({
         where: {
           ordenId: idOrden
         },
@@ -53,7 +68,7 @@ export class HistoricoService {
     }
 
     const totalRecords = async () => {
-      return await this.ordenRepository.count()
+      return await this.historicoRepository.count()
     }
 
     return [{
@@ -71,4 +86,16 @@ export class HistoricoService {
       }
     }]
   }
+
+  findOne(_id: number) {
+    return this.historicoRepository.findOne({
+      where: [ { id: _id }],
+      order: { id: 'DESC' }
+    });
+  }
+
+  remove(id: number) {
+    return this.historicoRepository.delete(id);
+  }
+
 }
