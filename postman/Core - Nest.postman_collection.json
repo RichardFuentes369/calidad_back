@@ -1165,34 +1165,89 @@
 					"name": "historico",
 					"item": [
 						{
-							"name": "crearHistorico",
+							"name": "getHistorico-id",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/orden-historico/1?page=1&limit=10&field=id&order=asc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-historico",
+										"1"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "field",
+											"value": "id"
+										},
+										{
+											"key": "order",
+											"value": "asc"
+										}
+									]
+								}
 							},
 							"response": []
 						},
 						{
-							"name": "editarHistorico",
+							"name": "postHistorico",
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"observacion\": \"bla bal bla\",\n    \"precio\": 2950,\n    \"recomendacion\": \"bla bal bla\",\n    \"orden_id\": 1,\n    \"proveedor_id\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/orden-historico/1",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-historico",
+										"1"
+									]
+								}
 							},
 							"response": []
 						},
 						{
-							"name": "eliminarHistorico",
+							"name": "deleteHistorico",
 							"request": {
-								"method": "GET",
-								"header": []
-							},
-							"response": []
-						},
-						{
-							"name": "verHistorico",
-							"request": {
-								"method": "GET",
-								"header": []
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/orden-historico/57",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-historico",
+										"57"
+									]
+								}
 							},
 							"response": []
 						}
@@ -1312,6 +1367,35 @@
 										"orden-mantenimiento",
 										"orden",
 										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "putEstado",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"estado\": \"Iniciado\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/orden-mantenimiento/18",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-mantenimiento",
+										"18"
 									]
 								}
 							},
