@@ -128,9 +128,9 @@ export class OrdenService {
 
   }
 
-  // remove(id: number) {
-  //   return this.ordenRepository.delete(id);
-  // }
+  remove(id: number) {
+    return this.ordenRepository.delete(id);
+  }
 
 
 }

@@ -1155,6 +1155,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getProveedoresSelect",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/proveedor/proveedorSelect",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"proveedor",
+								"proveedorSelect"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1170,7 +1190,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/orden-historico/1?page=1&limit=10&field=id&order=asc",
+									"raw": "localhost:3000/api/orden-historico/11?page=1&limit=10&field=id&order=asc",
 									"host": [
 										"localhost"
 									],
@@ -1178,7 +1198,7 @@
 									"path": [
 										"api",
 										"orden-historico",
-										"1"
+										"11"
 									],
 									"query": [
 										{
@@ -1209,7 +1229,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"observacion\": \"bla bal bla\",\n    \"precio\": 2950,\n    \"recomendacion\": \"bla bal bla\",\n    \"orden_id\": 1,\n    \"proveedor_id\": 1\n}",
+									"raw": "{\n    \"observacion\": \"bla bal bla\",\n    \"precio\": 2950,\n    \"recomendacion\": \"bla bal bla\",\n    \"orden_id\": 9,\n    \"proveedor_id\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1217,7 +1237,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/orden-historico/1",
+									"raw": "localhost:3000/api/orden-historico/9",
 									"host": [
 										"localhost"
 									],
@@ -1225,7 +1245,7 @@
 									"path": [
 										"api",
 										"orden-historico",
-										"1"
+										"9"
 									]
 								}
 							},
@@ -1237,7 +1257,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/orden-historico/57",
+									"raw": "localhost:3000/api/orden-historico/99",
 									"host": [
 										"localhost"
 									],
@@ -1245,7 +1265,7 @@
 									"path": [
 										"api",
 										"orden-historico",
-										"57"
+										"99"
 									]
 								}
 							},
@@ -1300,7 +1320,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"descripcion\": \"Mantenimiento xxx\",\n    \"fecha_mantenimiento\": \"2025-12-06\",\n    \"zona_id\": 2\n}",
+									"raw": "{\n    \"descripcion\": \"Mantenimiento 001\",\n    \"fecha_mantenimiento\": \"2025-12-06\",\n    \"zona_id\": 2\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1327,7 +1347,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/orden-mantenimiento/orden?serial=1743964043&tipo=Ord",
+									"raw": "localhost:3000/api/orden-mantenimiento/orden?serial=1744159872&tipo=Ord",
 									"host": [
 										"localhost"
 									],
@@ -1340,7 +1360,7 @@
 									"query": [
 										{
 											"key": "serial",
-											"value": "1743964043"
+											"value": "1744159872"
 										},
 										{
 											"key": "tipo",
@@ -1357,7 +1377,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/orden-mantenimiento/orden/8",
+									"raw": "localhost:3000/api/orden-mantenimiento/orden/9",
 									"host": [
 										"localhost"
 									],
@@ -1366,7 +1386,7 @@
 										"api",
 										"orden-mantenimiento",
 										"orden",
-										"8"
+										"9"
 									]
 								}
 							},
@@ -1387,7 +1407,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/orden-mantenimiento/18",
+									"raw": "localhost:3000/api/orden-mantenimiento/9",
 									"host": [
 										"localhost"
 									],
@@ -1395,7 +1415,27 @@
 									"path": [
 										"api",
 										"orden-mantenimiento",
-										"18"
+										"9"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteOrden",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/orden-mantenimiento/9",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"orden-mantenimiento",
+										"9"
 									]
 								}
 							},

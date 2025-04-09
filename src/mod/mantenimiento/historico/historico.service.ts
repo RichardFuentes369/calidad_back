@@ -20,7 +20,7 @@ export class HistoricoService {
       observacion: createHistoricoDto.observacion,
       precio: createHistoricoDto.precio,
       recomendacion: createHistoricoDto.recomendacion,
-      ordenId: createHistoricoDto.orden_id,
+      orden_id: createHistoricoDto.orden_id,
       proveedor_id: createHistoricoDto.proveedor_id,
     }
 
@@ -57,13 +57,14 @@ export class HistoricoService {
     const peticion = async (page) => {
       return await this.historicoRepository.find({
         where: {
-          ordenId: idOrden
+          orden_id: idOrden
         },
         skip: page,
         take: limit,
         order: {
           [field]: order
-        }
+        },
+        relations: ['proveedor', 'orden']
       })
     }
 

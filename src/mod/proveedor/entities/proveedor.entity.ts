@@ -31,6 +31,9 @@ export class Proveedor {
     nullable: true
   })
   fecha_actualizacion: number;
+
+  @OneToMany(() => Proveedor, (proveedor) => proveedor.proveedor)
+  proveedor: Proveedor[];
   // @OneToMany(() => PermisosModulos, (permiso) => permiso.userId)
   // permiso: PermisosModulos
 }

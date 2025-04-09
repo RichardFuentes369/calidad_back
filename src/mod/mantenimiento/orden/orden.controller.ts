@@ -51,9 +51,10 @@ export class OrdenController {
   update(@Param('id') id: string, @Body() updateOrdenDto: UpdateOrdenDto) {
     return this.ordenService.update(+id, updateOrdenDto);
   }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.ordenService.remove(+id);
-  // }
+  
+  @ApiTags('orden-mantenimiento')
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.ordenService.remove(+id);
+  }
 }

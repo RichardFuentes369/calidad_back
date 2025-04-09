@@ -1,7 +1,8 @@
 // import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, JoinColumn, ManyToOne, BeforeUpdate } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, JoinColumn, ManyToOne, BeforeUpdate, OneToMany } from 'typeorm';
 import { ordenStatus } from './enums/ordenStatus';
 import { Zona } from '@module/zona/entities/zona.entity';
+import { Historico } from '@module/mantenimiento/historico/entities/historico.entity';
 
 @Entity('mod_mantenimiento_orden')
 export class Orden {
@@ -47,6 +48,9 @@ export class Orden {
       default: ordenStatus.EnEspera,
     })
     estado: ordenStatus;
+
+    @OneToMany(() => Historico, (historico) => historico.orden)
+    historico: Historico[];
 
     @ManyToOne(() => Zona, zona => zona.ordenes)
     @JoinColumn({ name: 'zona_id' })

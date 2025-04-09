@@ -32,7 +32,7 @@ export class HistoricoController {
 
     try {
       let almacenamientoHistorico = await this.historicoService.create(createHistoricoDto)
-      await this.ordenService.actualizarPrecio(almacenamientoHistorico.ordenId, almacenamientoHistorico.precio, 1)
+      await this.ordenService.actualizarPrecio(almacenamientoHistorico.orden_id, almacenamientoHistorico.precio, 1)
       return almacenamientoHistorico 
     } catch (error) {
       
@@ -46,7 +46,7 @@ export class HistoricoController {
 
     try {
       let historico = await this.historicoService.findOne(+id)
-      await this.ordenService.actualizarPrecio(historico.ordenId, historico.precio, 0)
+      await this.ordenService.actualizarPrecio(historico.orden_id, historico.precio, 0)
       return await this.historicoService.remove(+id)
     } catch (error) {
       
