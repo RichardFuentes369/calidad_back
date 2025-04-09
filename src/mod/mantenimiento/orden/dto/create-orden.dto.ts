@@ -6,7 +6,7 @@ export class CreateOrdenDto {
     @IsString()
     readonly descripcion;
 
-    @IsString()
+    @IsNumber()
     readonly fecha_mantenimiento;
 
     @IsNumber()
