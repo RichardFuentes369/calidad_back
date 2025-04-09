@@ -5,6 +5,7 @@ import { PaginationDto } from '@global/dto/pagination.dto';
 import { Repository } from 'typeorm';
 import { Historico } from './entities/historico.entity';
 import { Orden } from '../orden/entities/orden.entity';
+import { format } from 'date-fns';
 
 @Injectable()
 export class HistoricoService {
@@ -72,8 +73,20 @@ export class HistoricoService {
       return await this.historicoRepository.count()
     }
 
+    const dataReal = await peticion(skipeReal)
+
+    const fechaParseada =  dataReal.map((data) => ({
+      ...data,
+      orden: {
+        ...data.orden, 
+        fecha_mantenimiento: data.orden.fecha_mantenimiento ? format(new Date(data.orden.fecha_mantenimiento * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+        fecha_creacion: data.orden.fecha_creacion ? format(new Date(data.orden.fecha_creacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+        fecha_actualizacion: data.orden.fecha_actualizacion ? format(new Date(data.orden.fecha_actualizacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+      },
+    }));
+
     return [{
-      'result': await peticion(skipeReal),
+      'result': fechaParseada,
       'pagination': {
         'page': page,
         'perPage': limit,

@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { Orden } from './entities/orden.entity';
 import { PaginationDto } from '@global/dto/pagination.dto';
 import { FilterOrdenDto } from './dto/filter-orden.dto';
+import { format } from 'date-fns';
 
 @Injectable()
 export class OrdenService {
@@ -51,9 +52,9 @@ export class OrdenService {
       if(arratResult == 0) throw new NotFoundException(`El parametro de busqueda ${field} no existe en la base de datos`)
     }
 
-  
+    
     const skipeReal = (page == 1) ? 0 : (page - 1) * limit
-
+    
     const peticion = async (page) => {
       return await this.ordenRepository.find({
         skip: page,
@@ -69,8 +70,17 @@ export class OrdenService {
       return await this.ordenRepository.count()
     }
 
+    const dataReal = await peticion(skipeReal)
+
+    const fechaParseada =  dataReal.map((data) => ({
+      ...data,
+      fecha_mantenimiento: data.fecha_mantenimiento ? format(new Date(data.fecha_mantenimiento * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+      fecha_creacion: data.fecha_creacion ? format(new Date(data.fecha_creacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+      fecha_actualizacion: data.fecha_actualizacion ? format(new Date(data.fecha_actualizacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+    }));
+
     return [{
-      'result': await peticion(skipeReal),
+      'result': fechaParseada,
       'pagination': {
         'page': page,
         'perPage': limit,
