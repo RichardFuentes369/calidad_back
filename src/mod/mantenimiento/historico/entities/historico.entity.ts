@@ -30,4 +30,6 @@ export class Historico {
     @Column({ name: 'proveedor_id', nullable: true }) 
     proveedor_id: number;
 
+    @Column()
+    fecha_creacion: number;
 }

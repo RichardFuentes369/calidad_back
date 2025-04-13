@@ -5,6 +5,7 @@ import { UpdateProveedorDto } from './dto/update-proveedor.dto';
 import { Repository } from 'typeorm';
 import { Proveedor } from './entities/proveedor.entity';
 import { PaginationDto } from '@global/dto/pagination.dto';
+import { format } from 'date-fns';
 
 @Injectable()
 export class ProveedorService {
@@ -20,7 +21,16 @@ export class ProveedorService {
       El proveedor con nit ${createProveedorDto.nit}, ya esta registrado en nuestra base de datos
     `)
 
-    return this.proveedorRepository.save(createProveedorDto);
+    let modelo = {
+      email: createProveedorDto.email,
+      estado: createProveedorDto.estado,
+      nit: createProveedorDto.nit,
+      razonSocial: createProveedorDto.razonSocial,
+      telefono: createProveedorDto.telefono,
+      fecha_creacion: Math.floor(Date.now() / 1000)
+    }
+
+    return this.proveedorRepository.save(modelo);
   }
  
   listarPropiedadesTabla(T) {
@@ -60,12 +70,21 @@ export class ProveedorService {
       })
     }
 
+    const dataReal = await peticion(skipeReal)
+
+    const fechaParseada =  dataReal.map((data) => ({
+      ...data,
+      fecha_creacion: data.fecha_creacion ? format(new Date(data.fecha_creacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+      fecha_actualizacion: data.fecha_actualizacion ? format(new Date(data.fecha_actualizacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+    }));
+   
+
     const totalRecords = async () => {
       return await this.proveedorRepository.count()
     }
 
     return [{
-      'result': await peticion(skipeReal),
+      'result': fechaParseada,
       'pagination': {
         'page': page,
         'perPage': limit,

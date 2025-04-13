@@ -5,6 +5,7 @@ import { UpdateZonaDto } from './dto/update-zona.dto';
 import { Repository } from 'typeorm';
 import { Zona } from './entities/zona.entity';
 import { PaginationDto } from '@global/dto/pagination.dto';
+import { format } from 'date-fns';
 
 @Injectable()
 export class ZonaService {
@@ -20,7 +21,14 @@ export class ZonaService {
       La zona con nombre ${createZonaDto.nombre} y descripcion ${createZonaDto.descripcion}, ya se encuentra registrada en nuestra base de datos
     `)
 
-    return this.zonaRepository.save(createZonaDto);
+    let modelo = {
+      descripcion: createZonaDto.descripcion,
+      nombre: createZonaDto.nombre,
+      ubicacion: createZonaDto.ubicacion,
+      fecha_creacion: Math.floor(Date.now() / 1000)
+    }
+
+    return this.zonaRepository.save(modelo);
   }
   
   listarPropiedadesTabla(T) {
@@ -60,12 +68,21 @@ export class ZonaService {
       })
     }
 
+    const dataReal = await peticion(skipeReal)
+
+    const fechaParseada =  dataReal.map((data) => ({
+      ...data,
+      fecha_creacion: data.fecha_creacion ? format(new Date(data.fecha_creacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+      fecha_actualizacion: data.fecha_actualizacion ? format(new Date(data.fecha_actualizacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
+    }));
+   
+
     const totalRecords = async () => {
       return await this.zonaRepository.count()
     }
 
     return [{
-      'result': await peticion(skipeReal),
+      'result': fechaParseada,
       'pagination': {
         'page': page,
         'perPage': limit,

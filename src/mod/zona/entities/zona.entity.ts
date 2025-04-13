@@ -15,11 +15,8 @@ export class Zona {
 
     @Column()
     ubicacion: string;
-  
-    @Column({ 
-      type: 'timestamp', 
-      default: () => 'CURRENT_TIMESTAMP' 
-    })
+
+    @Column()
     fecha_creacion: number;
   
     @Column({

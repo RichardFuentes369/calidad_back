@@ -21,10 +21,7 @@ export class Proveedor {
   @Column()
   estado: string;
 
-  @Column({ 
-    type: 'timestamp', 
-    default: () => 'CURRENT_TIMESTAMP' 
-  })
+  @Column()
   fecha_creacion: number;
 
   @Column({

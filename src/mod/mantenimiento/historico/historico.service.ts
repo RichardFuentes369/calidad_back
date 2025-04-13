@@ -21,6 +21,7 @@ export class HistoricoService {
       observacion: createHistoricoDto.observacion,
       precio: createHistoricoDto.precio,
       recomendacion: createHistoricoDto.recomendacion,
+      fecha_creacion: Math.floor(Date.now() / 1000),
       orden_id: createHistoricoDto.orden_id,
       proveedor_id: createHistoricoDto.proveedor_id,
     }
@@ -77,12 +78,7 @@ export class HistoricoService {
 
     const fechaParseada =  dataReal.map((data) => ({
       ...data,
-      orden: {
-        ...data.orden, 
-        fecha_mantenimiento: data.orden.fecha_mantenimiento ? format(new Date(data.orden.fecha_mantenimiento * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
         fecha_creacion: data.orden.fecha_creacion ? format(new Date(data.orden.fecha_creacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
-        fecha_actualizacion: data.orden.fecha_actualizacion ? format(new Date(data.orden.fecha_actualizacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
-      },
     }));
 
     return [{

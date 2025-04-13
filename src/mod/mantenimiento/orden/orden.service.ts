@@ -74,7 +74,6 @@ export class OrdenService {
 
     const fechaParseada =  dataReal.map((data) => ({
       ...data,
-      fecha_mantenimiento: data.fecha_mantenimiento ? format(new Date(data.fecha_mantenimiento * 1000), 'yyyy-MM-dd') : null,
       fecha_creacion: data.fecha_creacion ? format(new Date(data.fecha_creacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
       fecha_actualizacion: data.fecha_actualizacion ? format(new Date(data.fecha_actualizacion * 1000), 'yyyy-MM-dd HH:mm:ss') : null,
     }));
