@@ -60,10 +60,10 @@ export class ZonaService {
 
     const where: any = {};
 
-    if (filterZonaDto.nombre) {
+    if (filterZonaDto.nombre !== undefined && filterZonaDto.nombre) {
       where.nombre = Like(`%${filterZonaDto.nombre}%`);
     }
-    if (filterZonaDto.descripcion) {
+    if (filterZonaDto.descripcion !== undefined && filterZonaDto.descripcion) {
       where.descripcion = Like(`%${filterZonaDto.descripcion}%`);
     }
 

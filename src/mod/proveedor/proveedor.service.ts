@@ -62,23 +62,23 @@ export class ProveedorService {
 
     const where: any = {};
 
-    if (filterProveedorDto.isActive) {
+    if (filterProveedorDto.isActive !== undefined && filterProveedorDto.isActive) {
       where.isActive = Like(`%${filterProveedorDto.isActive}%`);
     }
 
-    if (filterProveedorDto.razonSocial) {
+    if (filterProveedorDto.razonSocial !== undefined && filterProveedorDto.razonSocial) {
       where.razonSocial = Like(`%${filterProveedorDto.razonSocial}%`);
     }
 
-    if (filterProveedorDto.telefono) {
+    if (filterProveedorDto.telefono !== undefined && filterProveedorDto.telefono) {
       where.telefono = Like(`%${filterProveedorDto.telefono}%`);
     }
 
-    if (filterProveedorDto.estado) {
+    if (filterProveedorDto.estado !== undefined && filterProveedorDto.estado) {
       where.estado = Like(`%${filterProveedorDto.estado}%`);
     }    
     
-    if (filterProveedorDto.nit) {
+    if (filterProveedorDto.nit !== undefined && filterProveedorDto.nit) {
       where.nit = Like(`%${filterProveedorDto.nit}%`);
     }
 

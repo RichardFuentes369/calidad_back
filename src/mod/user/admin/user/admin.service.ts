@@ -52,16 +52,16 @@ export class AdminService {
 
     const where: any = {};
 
-    if (filterUserDto.email) {
+    if (filterUserDto.email !== undefined && filterUserDto.email) {
       where.email = Like(`%${filterUserDto.email}%`);
     }
-    if (filterUserDto.firstName) {
+    if (filterUserDto.firstName !== undefined && filterUserDto.firstName) {
       where.firstName = Like(`%${filterUserDto.firstName}%`);
     }
-    if (filterUserDto.lastName) {
+    if (filterUserDto.lastName !== undefined && filterUserDto.lastName) {
       where.lastName = Like(`%${filterUserDto.lastName}%`);
     }
-    if (filterUserDto.isActive === 0 || filterUserDto.isActive === 1) {
+    if (filterUserDto.isActive !== undefined && filterUserDto.isActive === 0 || filterUserDto.isActive === 1) {
       where.isActive = filterUserDto.isActive;
     }
 

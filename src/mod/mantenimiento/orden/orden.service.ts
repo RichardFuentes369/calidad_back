@@ -56,22 +56,30 @@ export class OrdenService {
     
     const where: any = {};
 
-    if (filterOrdenDto.serial) {
+    if (filterOrdenDto.serial !== undefined && filterOrdenDto.serial != '') {
       where.serial = Like(`%${filterOrdenDto.serial}%`);
     }
-    if (filterOrdenDto.descripcion) {
+    if (filterOrdenDto.descripcion !== undefined && filterOrdenDto.descripcion != '') {
       where.descripcion = Like(`%${filterOrdenDto.descripcion}%`);
     }
-    if (filterOrdenDto.precio) {
+    if (filterOrdenDto.precio !== undefined && filterOrdenDto.precio != '') {
       where.precio = Like(`%${filterOrdenDto.precio}%`);
     }   
-    if (filterOrdenDto.estado) {
+    if (filterOrdenDto.estado !== undefined && filterOrdenDto.estado != '') {
       where.estado = Like(`%${filterOrdenDto.estado}%`);
     }
-    if (filterOrdenDto.zona_id) {
+    if (filterOrdenDto.zona_id !== undefined && filterOrdenDto.zona_id != '') {
       where.zona_id = Like(`%${filterOrdenDto.zona_id}%`);
     }
-    if(filterOrdenDto.fecha_mantenimiento_inicio != '' || filterOrdenDto.fecha_mantenimiento_fin != ''){
+    if(
+      (
+        filterOrdenDto.fecha_mantenimiento_inicio !== undefined && filterOrdenDto.fecha_mantenimiento_inicio != ''
+      ) 
+      || 
+      (
+        filterOrdenDto.fecha_mantenimiento_fin !== undefined && filterOrdenDto.fecha_mantenimiento_fin != ''
+      )
+    ){
       if(filterOrdenDto.fecha_mantenimiento_inicio != '' && filterOrdenDto.fecha_mantenimiento_fin == ''){
         where.fecha_mantenimiento = MoreThanOrEqual(filterOrdenDto.fecha_mantenimiento_inicio);
       }

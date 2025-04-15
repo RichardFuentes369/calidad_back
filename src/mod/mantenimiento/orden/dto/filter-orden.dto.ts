@@ -36,8 +36,8 @@ export class FilterOrdenDto {
     descripcion?: string;
 
     @IsOptional()
-    @IsNumber()
-    precio?: number;
+    @IsString()
+    precio?: string;
 
     @IsOptional()
     @IsString()
@@ -52,7 +52,7 @@ export class FilterOrdenDto {
     estado?: string;
 
     @IsOptional()
-    @IsNumber()
-    zona_id?: number;
+    @IsString()
+    zona_id?: string;
     
 }
