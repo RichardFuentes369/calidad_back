@@ -1382,6 +1382,41 @@
 										{
 											"key": "order",
 											"value": "asc"
+										},
+										{
+											"key": "serial",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "descripcion",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "precio",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "fecha_mantenimiento_inicio",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "fecha_mantenimiento_fin",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "estado",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "zona_id",
+											"value": "",
+											"disabled": true
 										}
 									]
 								}
@@ -1411,36 +1446,6 @@
 									"path": [
 										"api",
 										"orden-mantenimiento"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "getOrden-orden",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/orden-mantenimiento/orden?serial=1744159872&tipo=Ord",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"orden-mantenimiento",
-										"orden"
-									],
-									"query": [
-										{
-											"key": "serial",
-											"value": "1744159872"
-										},
-										{
-											"key": "tipo",
-											"value": "Ord"
-										}
 									]
 								}
 							},
