@@ -1,5 +1,6 @@
 // import { PermisosModulos } from 'src/mod/permisos/modulos/entities/modulo.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { proveedorStatus } from './enums/proveedorStatus';
 
 @Entity('mod_proveedores')
 export class Proveedor {
@@ -18,8 +19,12 @@ export class Proveedor {
   @Column({ unique: true })
   email: string;
 
-  @Column()
-  estado: string;
+  @Column({
+    type: 'enum',
+    enum: proveedorStatus,
+    default: proveedorStatus.Activo,
+  })
+  estado: proveedorStatus;
 
   @Column()
   fecha_creacion: number;

@@ -80,15 +80,22 @@ export class OrdenService {
         filterOrdenDto.fecha_mantenimiento_fin !== undefined && filterOrdenDto.fecha_mantenimiento_fin != ''
       )
     ){
-      if(filterOrdenDto.fecha_mantenimiento_inicio != '' && filterOrdenDto.fecha_mantenimiento_fin == ''){
-        where.fecha_mantenimiento = MoreThanOrEqual(filterOrdenDto.fecha_mantenimiento_inicio);
-      }
-      if(filterOrdenDto.fecha_mantenimiento_inicio == '' && filterOrdenDto.fecha_mantenimiento_fin != ''){
-        where.fecha_mantenimiento = LessThanOrEqual(filterOrdenDto.fecha_mantenimiento_fin);
-      }
       if(filterOrdenDto.fecha_mantenimiento_inicio != '' && filterOrdenDto.fecha_mantenimiento_fin != ''){
-        where.fecha_mantenimiento = Between(filterOrdenDto.fecha_mantenimiento_inicio, filterOrdenDto.fecha_mantenimiento_fin);
+        let fecha_final = parseInt(filterOrdenDto.fecha_mantenimiento_fin) + 86399
+        where.fecha_mantenimiento = Between(filterOrdenDto.fecha_mantenimiento_inicio, fecha_final.toString());
       }
+      if(filterOrdenDto.fecha_mantenimiento_inicio != '' && filterOrdenDto.fecha_mantenimiento_fin == undefined){
+          where.fecha_mantenimiento = MoreThanOrEqual(filterOrdenDto.fecha_mantenimiento_inicio);
+      }
+      if(filterOrdenDto.fecha_mantenimiento_inicio == undefined && filterOrdenDto.fecha_mantenimiento_fin != ''){
+        let fecha_final = parseInt(filterOrdenDto.fecha_mantenimiento_fin) + 86399
+        where.fecha_mantenimiento = LessThanOrEqual(fecha_final);
+      }
+    }
+    if (filterOrdenDto.fecha_creacion !== undefined && filterOrdenDto.fecha_creacion != '') {
+      let fecha_inicio = filterOrdenDto.fecha_creacion
+      let fecha_final = parseInt(filterOrdenDto.fecha_creacion) + 86399
+      where.fecha_creacion = Between(fecha_inicio, fecha_final.toString());
     }
 
     const peticion = async (page) => {

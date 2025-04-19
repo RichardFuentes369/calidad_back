@@ -7,6 +7,7 @@ import { Proveedor } from './entities/proveedor.entity';
 import { PaginationDto } from '@global/dto/pagination.dto';
 import { format } from 'date-fns';
 import { FilterProveedorDto } from './dto/filter-proveedor.dto';
+import { proveedorStatus } from './entities/enums/proveedorStatus';
 
 @Injectable()
 export class ProveedorService {
@@ -170,7 +171,7 @@ export class ProveedorService {
     return this.proveedorRepository.find({
       select: ['id', 'razonSocial'],
       where: [
-        { 'estado': 'activo' }
+        { 'estado': proveedorStatus.Activo }
       ]
     });
   }

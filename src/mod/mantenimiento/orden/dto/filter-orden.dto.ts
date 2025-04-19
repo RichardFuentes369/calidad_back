@@ -49,6 +49,10 @@ export class FilterOrdenDto {
 
     @IsOptional()
     @IsString()
+    fecha_creacion?: string;
+
+    @IsOptional()
+    @IsString()
     estado?: string;
 
     @IsOptional()

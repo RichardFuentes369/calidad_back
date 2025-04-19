@@ -1,9 +1,10 @@
 // import { Transform } from "class-transformer";
 import { IsString, IsBoolean, IsNumber, IsEmail, IsEnum } from "class-validator";
+import { proveedorStatus } from "../entities/enums/proveedorStatus";
 
 enum Estado {
-    activo = 'activo',
-    inactivo = 'inactivo'
+    Activo = proveedorStatus.Activo,
+    Inactivo = proveedorStatus.Inactivo
 }
 
 export class CreateProveedorDto {
